@@ -17,7 +17,7 @@
                     <input name="password" type="password" class="form-control" placeholder="Enter Password">
                 </div>
                 <button name="do_login" type="submit" class="btn btn-primary">Login</button>
-                <a class="btn btn-default" href="register.html">Create an Account</a>
+                <a class="btn btn-default" href="register.php">Create an Account</a>
             </form>
         </div>
         <!-- category start -->
