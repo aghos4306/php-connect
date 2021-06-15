@@ -1,5 +1,4 @@
 <?php
-
 class Database
 {
     private $host = DB_HOST;
@@ -13,25 +12,31 @@ class Database
 
     public function __construct()
     {
-        // set DSN
-        $dsn = 'mysql:host=' . $this->host . ';dbname' . $this->dbname;
-        // set options
+        // Set DSN
+        //$dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbname;
+        $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbname . ';charset=utf8mb4';
+        // Set options
         $options = array(
             PDO::ATTR_PERSISTENT => false,
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
         );
-        // create a new PDO instance
+        // Create a new PDO instanace
         try {
             $this->dbh = new PDO($dsn, $this->user, $this->pass, $options);
-        } catch (PDOException $e) {
+        }        // Catch any errors
+        catch (PDOException $e) {
             $this->error = $e->getMessage();
         }
+
+        //var_dump($this->error);
     }
+
 
     public function query($query)
     {
         $this->stmt = $this->dbh->prepare($query);
     }
+
 
     public function bind($param, $value, $type = null)
     {
@@ -52,6 +57,7 @@ class Database
         }
         $this->stmt->bindValue($param, $value, $type);
     }
+
 
     public function execute()
     {
