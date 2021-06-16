@@ -5,16 +5,16 @@ class Topic
     private $db;
 
     /*
-         *	Constructor
-         */
+    *	Constructor
+    */
     public function __construct()
     {
         $this->db = new Database;
     }
 
     /*
-          *	Get All Topics
-          */
+    *	Get All Topics
+    */
     public function getAllTopics()
     {
         $this->db->query("SELECT topics.*, users.username, users.avatar, categories.name FROM topics
@@ -28,5 +28,37 @@ class Topic
         $results = $this->db->resultset();
 
         return $results;
+    }
+
+    //Get total number of Topics
+    public function getTotalTopics()
+    {
+        $this->db->query('SELECT * FROM topics');
+        $rows = $this->db->resultset();
+        return $this->db->rowCount();
+    }
+
+    //Get total number of Categories
+    public function getTotalCategories()
+    {
+        $this->db->query('SELECT * FROM categories');
+        $rows = $this->db->resultset();
+        return $this->db->rowCount();
+    }
+
+    //get total number of Users
+    public function getTotalUsers()
+    {
+        $this->db->query('SELECT * FROM users');
+        $rows = $this->db->resultset();
+        return $this->db->rowCount();
+    }
+
+    //get total number of replies
+    public function getTotalReplies($topic_id)
+    {
+        $this->db->query('SELECT * FROM replies WHERE topic_id = ' . $topic_id);
+        $rows = $this->db->resultset();
+        return $this->db->rowCount();
     }
 }

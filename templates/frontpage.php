@@ -2,8 +2,8 @@
 
 <ul id="topics">
     <?php if ($topics) : ?>
+        <?php var_dump($this->topics) ?>
         <?php foreach ($topics as $topic) : ?>
-
             <li class="topic">
                 <div class="row">
                     <div class="col-md-2">
@@ -34,8 +34,8 @@
 <h3>Forum Statistics</h3>
 <ul>
     <li>Total Number of Users: <strong>54</strong></li>
-    <li>Total Number of Topics: <strong>12</strong></li>
-    <li>Total Number of Categories: <strong>4</strong></li>
+    <li>Total Number of Topics: <strong>10</strong></li>
+    <li>Total Number of Categories: <strong>20</strong></li>
 </ul>
 
 <?php include 'includes/footer.php'; ?>

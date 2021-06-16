@@ -8,6 +8,8 @@ $topic = new Topic;
 $template = new Template('templates/frontpage.php');
 
 $template->topics = $topic->getAllTopics();
+$template->topics = $topic->getTotalTopics();
+$template->topics = $topic->getTotalCategories();
 
 // Display template
 echo $template;
